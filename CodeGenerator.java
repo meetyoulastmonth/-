@@ -1,4 +1,4 @@
-package com.mark.mark.common;
+package com.mark.common;
 
 import com.baomidou.mybatisplus.core.exceptions.MybatisPlusException;
 import com.baomidou.mybatisplus.core.toolkit.StringPool;
@@ -35,6 +35,7 @@ public class CodeGenerator {
 
         GlobalConfig gc=new GlobalConfig();
         String projectPath=System.getProperty("user.dir");
+        gc.setOutputDir(projectPath+"/src/main/java");
         gc.setAuthor("jobob");
         gc.setOpen(false);
 
@@ -64,7 +65,7 @@ public class CodeGenerator {
         foclist.add(new FileOutConfig(templatPath) {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                return projectPath+"/src/main/resoucres/mapper/"+"/"+tableInfo.getEntityName()+"Mapper"+ StringPool.DOT_XML;
+                return projectPath+"/src/main/resources/mapper/"+"/"+tableInfo.getEntityName()+"Mapper"+ StringPool.DOT_XML;
             }
         });
 
@@ -81,6 +82,7 @@ public class CodeGenerator {
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
 
+        //strategy.setInclude(scanner("user_record").split(","));
         strategy.setControllerMappingHyphenStyle(true);
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
