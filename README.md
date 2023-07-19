@@ -1,1 +1,1 @@
-This is a CodeGenerator
+This is a CodeGenerator using Mybatis-Plus.
